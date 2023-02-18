@@ -126,10 +126,13 @@ public class PaginationPageSteps {
     }
 
     @And("user should see {string} city with info below and an image")
-    public void userShouldSeeCityWithInfoBelowAndAnImage(String city, DataTable dataTable) {
+    public void userShouldSeeCityWithInfoBelowAndAnImage(String string, DataTable dataTable) {
         List<String> expectedTest = dataTable.asList();
+        String city = techGlobalPaginationPage.cityInfo.get(0).getText();
+        Assert.assertEquals(string, city.substring(city.indexOf(" ") + 1));
         for (int i = 0; i < expectedTest.size(); i++) {
             Assert.assertEquals(expectedTest.get(i), techGlobalPaginationPage.cityInfo.get(i).getText());
+            Assert.assertTrue(techGlobalPaginationPage.cityImage.isDisplayed());
         }
         if(techGlobalPaginationPage.nextButton.isEnabled()) techGlobalPaginationPage.nextButton.click();
     }

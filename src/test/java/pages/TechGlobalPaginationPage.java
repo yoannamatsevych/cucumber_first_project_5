@@ -30,5 +30,8 @@ public class TechGlobalPaginationPage extends TechGlobalBasePage{
     @FindBy(css = "div[class*='Data']>p")
     public List<WebElement> cityInfo;
 
+    @FindBy(className = "city_image")
+    public WebElement cityImage;
+
 
 }
